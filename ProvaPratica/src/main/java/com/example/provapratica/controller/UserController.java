@@ -3,51 +3,38 @@ package com.example.provapratica.controller;
 import com.example.provapratica.entity.User;
 import com.example.provapratica.service.ProjectUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private ProjectUserService userService;
 
-    // 🟩 REGISTRAZIONE UTENTE
-    // POST http://localhost:8086/user/register
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
-        return userService.addUser(user);
-    }
-
-    // 🔍 DETTAGLIO UTENTE PER ID
-    // GET http://localhost:8086/user/{id}
+    // 🔍 DETTAGLIO UTENTE PER ID (solo admin)
+    // GET http://localhost:8086/users/{id}
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Optional<User> getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
 
-    // 💰 RICARICA CREDITO
-    // PATCH http://localhost:8086/user/{id}/credit/toup?amount=50
-    @PatchMapping("/{id}/credit/toup")
-    public User rechargeCredit(@PathVariable Integer id, @RequestParam Integer amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("L'importo deve essere positivo (come parametro)");
-        }
-        return userService.rechargeCredit(id, amount);
-    }
-
-    // 📋 ELENCO DI TUTTI GLI UTENTI (facoltativo)
-    // GET http://localhost:8086/user/all
+    // 📋 ELENCO DI TUTTI GLI UTENTI (solo admin)
+    // GET http://localhost:8086/users/all
     @GetMapping("/all")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // ❌ ELIMINA UTENTE
+    // ❌ ELIMINA UTENTE (solo admin)
     // DELETE http://localhost:8086/users/{id}
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteUser(@PathVariable Integer id) {
         return userService.deleteUser(id);
     }

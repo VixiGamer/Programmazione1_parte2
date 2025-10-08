@@ -18,11 +18,15 @@ public class ProjectUserService {
 
     // 🟩 REGISTRA UN NUOVO UTENTE
     public User addUser(User user) {
-        // Se non viene impostato un credito iniziale, metti 0
         if (user.getCredit() == null) {
             user.setCredit(BigDecimal.ZERO);
         }
         return repository.save(user);
+    }
+
+    // 🔍 OTTIENI UTENTE PER EMAIL
+    public User getUserByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     // 🔍 OTTIENI TUTTI GLI UTENTI
