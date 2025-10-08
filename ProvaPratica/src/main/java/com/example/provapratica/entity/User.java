@@ -1,19 +1,14 @@
 package com.example.provapratica.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.*;
 
 import jakarta.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,7 +33,15 @@ public class User {
     private BigDecimal credit;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
+    private List<String> roles = new ArrayList<>();
+
+    @PrePersist
+    public void setDefaultRole() {
+        if (roles == null || roles.isEmpty()) {
+            roles = new ArrayList<>();
+            roles.add("USER");
+        }
+    }
 
     public Integer getId() {
         return id;
