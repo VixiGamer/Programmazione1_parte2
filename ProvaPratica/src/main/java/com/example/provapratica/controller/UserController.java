@@ -29,11 +29,11 @@ public class UserController {
     }
 
     // 💰 RICARICA CREDITO
-    // PUT http://localhost:8086/user/{id}/recharge?amount=50
-    @PutMapping("/{id}/recharge")
+    // PATCH http://localhost:8086/user/{id}/credit/toup?amount=50
+    @PatchMapping("/{id}/credit/toup")
     public User rechargeCredit(@PathVariable Integer id, @RequestParam Integer amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("L'importo deve essere positivo");
+            throw new IllegalArgumentException("L'importo deve essere positivo (come parametro)");
         }
         return userService.rechargeCredit(id, amount);
     }
@@ -43,5 +43,12 @@ public class UserController {
     @GetMapping("/all")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    // ❌ ELIMINA UTENTE
+    // DELETE http://localhost:8086/users/{id}
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        return userService.deleteUser(id);
     }
 }

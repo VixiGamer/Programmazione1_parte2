@@ -4,6 +4,7 @@ import com.example.provapratica.entity.Trip;
 import com.example.provapratica.entity.User;
 import com.example.provapratica.entity.UserRepository;
 import com.example.provapratica.entity.TripRepository;
+import com.example.provapratica.service.ProjectTripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,38 @@ public class TripController {
     @Autowired
     private TripRepository tripRepository;
 
+    @Autowired
+    private ProjectTripService tripService;
+
+    // 🟩 CREA UNA NUOVA CORSA
+    // POST http://localhost:8086/trips/create
+    @PostMapping("/create")
+    public Trip createTrip(@RequestBody Trip trip) {
+        return tripService.createTrip(trip);
+    }
+
+    // 🔍 OTTIENI TUTTE LE CORSE
+    // GET http://localhost:8086/trips/all
+    @GetMapping("/all")
+    public Iterable<Trip> getAllTrips() {
+        return tripService.getAllTrips();
+    }
+
+    // 🔍 OTTIENI UNA CORSA PER ID
+    // GET http://localhost:8086/trips/{id}
+    @GetMapping("/{id}")
+    public Optional<Trip> getTripById(@PathVariable Integer id) {
+        return tripService.getTripById(id);
+    }
+
+    // ❌ ELIMINA UNA CORSA
+    // DELETE http://localhost:8086/trips/{id}
+    @DeleteMapping("/{id}")
+    public String deleteTrip(@PathVariable Integer id) {
+        return tripService.deleteTrip(id);
+    }
+
+    // 💳 ACQUISTA UNA CORSA
     // 🟩 POST http://localhost:8086/trip/purchase?userId=1&tripId=2
     @PostMapping("/purchase")
     public ResponseEntity<?> purchaseTrip(Integer userId, Integer tripId) {
