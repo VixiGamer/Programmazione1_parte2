@@ -1,0 +1,1 @@
+Link per gli endpoint su postman: https://vixigamer-2641682.postman.co/workspace/Viggo's-Workspace~09fb4b40-e998-4380-8362-be3affc6b92a/folder/48386671-471f8276-3490-4b6a-add1-82471309d1d6?action=share&source=copy-link&creator=48386671&ctx=documentation
