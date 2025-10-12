@@ -23,7 +23,7 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // 🟩 REGISTRAZIONE
+    //REGISTRAZIONE
     // POST http://localhost:8086/register
     @PostMapping("/register")
     public User register(@RequestBody User user) {
@@ -31,7 +31,7 @@ public class AuthController {
         return userService.addUser(user);
     }
 
-    // 🔐 LOGIN
+    //LOGIN
     // POST http://localhost:8086/login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
@@ -45,14 +45,14 @@ public class AuthController {
         return ResponseEntity.ok(new LoginResponse(token, user.getEmail(), user.getName()));
     }
 
-    // 👤 DATI UTENTE AUTENTICATO
+    //DATI UTENTE AUTENTICATO
     // GET http://localhost:8086/me
     @GetMapping("/me")
     public User getCurrentUser(Authentication authentication) {
         return (User) authentication.getPrincipal();
     }
 
-    // 💰 RICARICA CREDITO PROPRIO
+    //RICARICA CREDITO PROPRIO
     // PATCH http://localhost:8086/me/credit/toup
     @PatchMapping("/me/credit/toup")
     public User rechargeMyCredit(Authentication authentication, @RequestParam Integer amount) {
