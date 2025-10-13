@@ -18,21 +18,21 @@ public class TripController {
     @Autowired
     private ProjectTripService tripService;
 
-    //ELENCA TUTTE LE CORSE (pubblico)
+    // ELENCA TUTTE LE CORSE (pubblico)
     // GET http://localhost:8086/trips
     @GetMapping
     public Iterable<Trip> getAllTrips() {
         return tripService.getAllTrips();
     }
 
-    //DETTAGLIO CORSA PER ID (pubblico)
+    // DETTAGLIO CORSA PER ID (pubblico)
     // GET http://localhost:8086/trips/{id}
     @GetMapping("/{id}")
     public Optional<Trip> getTripById(@PathVariable Integer id) {
         return tripService.getTripById(id);
     }
 
-    //CREA CORSA (solo admin)
+    // CREA CORSA (solo admin)
     // POST http://localhost:8086/trips
     @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -40,7 +40,7 @@ public class TripController {
         return tripService.createTrip(trip);
     }
 
-    //ACQUISTA CORSA (autenticato)
+    // ACQUISTA CORSA (autenticato)
     // POST http://localhost:8086/trips/{tripId}/buy
     @PostMapping("/{tripId}/buy")
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
@@ -49,7 +49,7 @@ public class TripController {
         return tripService.purchaseTrip(user.getId(), tripId);
     }
 
-    //ELIMINA CORSA (solo admin)
+    // ELIMINA CORSA (solo admin)
     // DELETE http://localhost:8086/trips/{id}
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")

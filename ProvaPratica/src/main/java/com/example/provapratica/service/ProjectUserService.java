@@ -16,7 +16,7 @@ public class ProjectUserService {
     @Autowired
     private UserRepository repository;
 
-    // 🟩 REGISTRA UN NUOVO UTENTE
+    // REGISTRA UN NUOVO UTENTE
     public User addUser(User user) {
         if (user.getCredit() == null) {
             user.setCredit(BigDecimal.ZERO);
@@ -24,22 +24,22 @@ public class ProjectUserService {
         return repository.save(user);
     }
 
-    // 🔍 OTTIENI UTENTE PER EMAIL
+    // OTTIENI UTENTE PER EMAIL
     public User getUserByEmail(String email) {
         return repository.findByEmail(email);
     }
 
-    // 🔍 OTTIENI TUTTI GLI UTENTI
+    // OTTIENI TUTTI GLI UTENTI
     public Iterable<User> getAllUsers() {
         return repository.findAll();
     }
 
-    // 🔍 OTTIENI UTENTE PER ID
+    // OTTIENI UTENTE PER ID
     public Optional<User> getUserById(Integer id) {
         return repository.findById(id);
     }
 
-    // 💰 RICARICA CREDITO
+    // RICARICA CREDITO
     public User rechargeCredit(Integer id, Integer amount) {
         Optional<User> optionalUser = repository.findById(id);
         if (optionalUser.isPresent()) {
@@ -51,7 +51,7 @@ public class ProjectUserService {
         }
     }
 
-    // ❌ ELIMINA UTENTE
+    // ELIMINA UTENTE
     public String deleteUser(Integer id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);

@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private ProjectUserService userService;
 
-    //DETTAGLIO UTENTE PER ID (solo admin)
+    // DETTAGLIO UTENTE PER ID (solo admin)
     // GET http://localhost:8086/users/{id}
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -23,7 +23,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    //ELENCO DI TUTTI GLI UTENTI (solo admin)
+    // ELENCO DI TUTTI GLI UTENTI (solo admin)
     // GET http://localhost:8086/users/all
     @GetMapping("/all")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -31,7 +31,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    //ELIMINA UTENTE (solo admin)
+    // ELIMINA UTENTE (solo admin)
     // DELETE http://localhost:8086/users/{id}
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")

@@ -25,7 +25,7 @@ public class ProjectTripService {
     @Autowired
     private UserRepository userRepository;
 
-    // 🟢 CREA UNA NUOVA CORSA
+    // CREA UNA NUOVA CORSA
     public Trip createTrip(Trip trip) {
         if (trip.getPrice().compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Il prezzo non può essere negativo");
@@ -33,23 +33,23 @@ public class ProjectTripService {
         return tripRepository.save(trip);
     }
 
-    // 🟢 OTTIENI TUTTE LE CORSE
+    // OTTIENI TUTTE LE CORSE
     public Iterable<Trip> getAllTrips() {
         return tripRepository.findAll();
     }
 
-    // 🟢 OTTIENI UNA CORSA PER ID
+    // OTTIENI UNA CORSA PER ID
     public Optional<Trip> getTripById(Integer id) {
         return tripRepository.findById(id);
     }
 
-    // 🟢 ELIMINA UNA CORSA
+    // ELIMINA UNA CORSA
     public String deleteTrip(Integer id) {
         tripRepository.deleteById(id);
         return "Trip with id " + id + " has been deleted!";
     }
 
-    // 🟢 ACQUISTA UNA CORSA
+    // ACQUISTA UNA CORSA
     public ResponseEntity<?> purchaseTrip(Integer userId, Integer tripId) {
         Optional<User> userOpt = userRepository.findById(userId);
         Optional<Trip> tripOpt = tripRepository.findById(tripId);
