@@ -1,10 +1,8 @@
 package com.example.provapratica.entity;
 
-
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.DecimalMin;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -30,6 +28,7 @@ public class User {
     private String password;
 
     @NotNull(message = "The credit parameter must not be blank!")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Credit cannot be negative!")
     private BigDecimal credit;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -84,6 +83,9 @@ public class User {
     }
 
     public User setCredit(BigDecimal credit) {
+        if (credit != null && credit.signum() == -1) {
+            throw new IllegalArgumentException("Credit cannot be negative!");
+        }
         this.credit = credit;
         return this;
     }
