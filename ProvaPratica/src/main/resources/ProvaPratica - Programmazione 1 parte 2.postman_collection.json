@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "17d89fbb-0160-4cdd-adf9-f4fdf71bd595",
+		"name": "ProvaPratica - Programmazione 1 parte 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48386671",
+		"_collection_link": "https://vixigamer-2641682.postman.co/workspace/Viggo's-Workspace~09fb4b40-e998-4380-8362-be3affc6b92a/collection/48386671-17d89fbb-0160-4cdd-adf9-f4fdf71bd595?action=share&source=collection_link&creator=48386671"
+	},
+	"item": [
+		{
+			"name": "provapratica",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Viggo\",\r\n    \"email\":\"viggo@gmail.com\",\r\n    \"password\":\"viggo\",\r\n    \"credit\":1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"vincenzo@gmail.com\",\r\n  \"password\": \"vincenzo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"vincenzo@gmail.com\",\r\n  \"password\": \"vincenzo\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8086/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "me/credit/toup",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/me/credit/toup?amount=100",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"me",
+										"credit",
+										"toup"
+									],
+									"query": [
+										{
+											"key": "amount",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users/id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWdnb0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5OTg4MzYsImV4cCI6MTc2MDA4NTIzNn0.sMj_M3BsYyd41AtEpMK2VYiHlAxi35PviZq4xHUeTPk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/users/102",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"users",
+										"102"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users/id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"vincenzo@gmail.com\",\r\n  \"password\": \"vincenzo\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8086/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users/all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWdnb0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5OTg4MzYsImV4cCI6MTc2MDA4NTIzNn0.sMj_M3BsYyd41AtEpMK2VYiHlAxi35PviZq4xHUeTPk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/users/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"users",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "trip",
+					"item": [
+						{
+							"name": "trips",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/trips",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"trips"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trips",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"origin\": \"Taormina\",\r\n  \"destination\": \"Catania\",\r\n  \"departureTime\": \"2025-10-15T14:30:00\",\r\n  \"price\": 4.80\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/trips",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"trips"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trips/id",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "trips/id/buy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"origin\": \"Taormina\",\r\n  \"destination\": \"Catania\",\r\n  \"departureTime\": \"2025-10-15T14:30:00\",\r\n  \"price\": 4.80\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8086/trips/2/buy",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"trips",
+										"2",
+										"buy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trips/id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aW5jZW56b0BnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJpYXQiOjE3NTk5MzQ0MDEsImV4cCI6MTc2MDAyMDgwMX0.2_mUQWKh7jzEfveywr7hlk6oWcJL-4kPYEI650F94ok",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"origin\": \"Taormina\",\r\n  \"destination\": \"Catania\",\r\n  \"departureTime\": \"2025-10-15T14:30:00\",\r\n  \"price\": 4.80\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8086/trips/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"trips",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
